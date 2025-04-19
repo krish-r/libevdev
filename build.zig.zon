@@ -1,0 +1,20 @@
+.{
+    .name = .libevdev,
+    .version = "1.13.4",
+    .fingerprint = 0x48c0e290583363d4, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.14.0",
+
+    .dependencies = .{
+        .libevdev = .{
+            .url = "git+https://gitlab.freedesktop.org/libevdev/libevdev/?ref=libevdev-1.13.4#ac0056961c3332a260db063ab4fccc7747638a1d",
+            .hash = "N-V-__8AANMxDAAf-rkutac-3EWwxzHeShacbZc9_8wshGYa",
+        },
+    },
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "README.md",
+    },
+}
