@@ -5,9 +5,8 @@ pub fn build(b: *std.Build) void {
     const libevdev_src = b.dependency("libevdev", .{});
 
     const os = switch (builtin.os.tag) {
-        .linux => "linux",
-        .freebsd => "freebsd",
-        else => |other| @compileError("Unsupported OS: '" ++ @tagName(other) ++ "'"),
+        .linux, .freebsd => |supported| @tagName(supported),
+        else => |unsupported| @compileError("Unsupported OS: '" ++ @tagName(unsupported) ++ "'"),
     };
 
     const linkage = b.option(std.builtin.LinkMode, "linkage", "link mode") orelse .dynamic;
