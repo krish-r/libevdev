@@ -1,0 +1,27 @@
+name: CI
+on:
+  pull_request:
+    paths-ignore:
+      - "README.md"
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Zig
+        uses: mlugg/setup-zig@v1
+        with:
+          version: master
+
+      - name: Build
+        run: zig build -Doptimize=ReleaseSafe
