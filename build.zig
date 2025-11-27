@@ -40,7 +40,7 @@ pub fn build(b: *std.Build) void {
     cmd.addFileArg(input_h);
     cmd.addFileArg(input_event_codes_h);
     const wf = b.addWriteFiles();
-    _ = wf.addCopyFile(cmd.captureStdOut(), "event-names.h");
+    _ = wf.addCopyFile(cmd.captureStdOut(.{}), "event-names.h");
 
     const config_h = b.addConfigHeader(.{ .style = .blank }, .{ ._GNU_SOURCE = 1 });
     lib.addConfigHeader(config_h);
