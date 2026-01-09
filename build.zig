@@ -14,7 +14,7 @@ pub fn build(b: *std.Build) void {
     const root = libevdev_src.path("");
     const src = root.path(b, "libevdev");
     const include = root.path(b, "include");
-    const include_subpath = include.path(b, b.fmt("linux/{s}", .{os}));
+    const include_subpath = include.path(b, b.pathJoin(&.{ "linux", os }));
 
     const lib = b.addLibrary(.{
         .name = "evdev",
@@ -43,19 +43,19 @@ pub fn build(b: *std.Build) void {
     _ = wf.addCopyFile(cmd.captureStdOut(.{}), "event-names.h");
 
     const config_h = b.addConfigHeader(.{ .style = .blank }, .{ ._GNU_SOURCE = 1 });
-    lib.addConfigHeader(config_h);
+    lib.root_module.addConfigHeader(config_h);
 
-    lib.addCSourceFiles(.{
+    lib.root_module.addCSourceFiles(.{
         .root = root,
         .files = files,
         .flags = flags,
     });
 
-    lib.addIncludePath(root);
-    lib.addIncludePath(src);
-    lib.addIncludePath(include);
-    lib.addIncludePath(include_subpath);
-    lib.addIncludePath(wf.getDirectory());
+    lib.root_module.addIncludePath(root);
+    lib.root_module.addIncludePath(src);
+    lib.root_module.addIncludePath(include);
+    lib.root_module.addIncludePath(include_subpath);
+    lib.root_module.addIncludePath(wf.getDirectory());
 
     lib.installHeader(libevdev_h, "libevdev/libevdev.h");
     lib.installHeader(libevdev_uinput_h, "libevdev/libevdev-uinput.h");
