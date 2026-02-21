@@ -1,13 +1,13 @@
 .{
     .name = .libevdev,
-    .version = "1.13.5",
+    .version = "1.13.6",
     .fingerprint = 0x48c0e290583363d4, // Changing this has security and trust implications.
-    .minimum_zig_version = "0.16.0-dev.2075+62d6bbc7d",
+    .minimum_zig_version = "0.16.0-dev.2637+6a9510c0e",
 
     .dependencies = .{
         .libevdev = .{
-            .url = "git+https://gitlab.freedesktop.org/libevdev/libevdev/?ref=libevdev-1.13.5#f3a9c2038d54c95abedc58df2ff16738da355289",
-            .hash = "N-V-__8AAOg0DACi0vkbzCunxejgukP-CTSofNSA1aYajKy2",
+            .url = "git+https://gitlab.freedesktop.org/libevdev/libevdev/?ref=libevdev-1.13.6#6ce9eb316203da75971740e79f20188009e7c323",
+            .hash = "N-V-__8AAEM-DAATCD6cqOHTYoVmoGkoVOODgSWTnJbHtvsm",
         },
     },
 
